@@ -1,0 +1,31 @@
+{
+  "name": "teste_mercado_livre",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.6.0",
+    "rupture": "^0.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venturalp/ML_Teste.git"
+  },
+  "author": "Guilherme Ventura de Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venturalp/ML_Teste/issues"
+  },
+  "homepage": "https://github.com/venturalp/ML_Teste#readme"
+}
