@@ -42,7 +42,7 @@ gulp.task('comp-stylus', function () {
 	return gulp.src('./site/stylus/general.styl') //arquivo principal do stylus
 		.pipe(stylus(options))
 		.pipe(rename('general.css')) //nome do arquivo compilado
-		.pipe(gulp.dest('./site/dist/css/')); //destino do arquivo compilado
+		.pipe(gulp.dest('./site/css/')); //destino do arquivo compilado
 });
 
 ////task 'js'

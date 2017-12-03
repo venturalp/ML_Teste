@@ -6,6 +6,90 @@ var https = require('https');
 
 app.use(express.static(__dirname + "/site"));
 
+app.get('/api/items/:id', function (req, res) {
+	//	res.json({id:req.params.id});	
+	https.get('https://api.mercadolibre.com/items/' + req.params.id, (resp) => {
+		let data = '';
+		let retorno = {};
+
+		resp.on('data', (chunk) => {
+			data += chunk;
+		});
+
+		resp.on('end', () => {
+			data = JSON.parse(data);
+
+			retorno.author = {
+				name: 'Guilherme',
+				lastname: 'Ventura de Souza'
+			};
+
+			retorno.item = {
+				id: data.id,
+				title: data.title,
+				price: {
+					currency: data.currency_id,
+					amount: Math.floor(data.price),
+					decimal: ((data.price % 1).toFixed(2) * 100)
+				},
+				picture: data.pictures[0].url,
+				condition: data.condition,
+				free_shipping: data.shipping.free_shipping,
+				sold_quantity: data.sold_quantity,
+				description: ''
+			}
+
+			let getCurrency = function (callback) {
+				https.get('https://api.mercadolibre.com/currencies/' + retorno.item.price.currency, (resp) => {
+					let curStr = '';
+					resp.on('data', (chunk) => {
+						curStr += chunk;
+					}).on('end', () => {
+						curStr = JSON.parse(curStr);
+						retorno.item.price.currency = curStr.symbol;
+
+						callback();
+					}).on('error', (err) => {
+						res.json({
+							erro: err.message
+						});
+					})
+				});
+			}
+
+			let getDescription = function (callback) {
+				https.get('https://api.mercadolibre.com/items/' + retorno.item.id + '/description', (resp) => {
+					let curStr = '';
+					resp.on('data', (chunk) => {
+						curStr += chunk;
+					}).on('end', () => {
+						curStr = JSON.parse(curStr);
+						retorno.item.description = curStr.plain_text;
+						callback();
+					}).on('error', (err) => {
+						res.json({
+							erro: err.message
+						});
+					})
+				});
+			}
+
+			getCurrency(function () {
+				getDescription(function () {
+					res.json(retorno);
+				});
+			});
+
+		});
+
+
+	}).on('error', (err) => {
+		res.json({
+			erro: err.message
+		});
+	});
+});
+
 app.get('/api/items', function (req, res) {
 	https.get('https://api.mercadolibre.com/sites/MLA/search?q=' + req.query.q, (resp) => {
 		let data = '';
@@ -40,7 +124,7 @@ app.get('/api/items', function (req, res) {
 					title: value.title,
 					price: {
 						currency: value.currency_id,
-						amout: Math.floor(value.price),
+						amount: Math.floor(value.price),
 						decimal: ((value.price % 1).toFixed(2) * 100)
 					},
 					condition: value.condition,
@@ -66,30 +150,29 @@ app.get('/api/items', function (req, res) {
 
 						}).on('error', (err) => {
 							return callback(null, err);
-							console.log("Erro: " + err.message);
 						})
 					});
 
 
 				}, function (err, extend) {
 					if (err) {
-						console.log("Erro: " + err.message);
+						res.json({
+							erro: err.message
+						});
 					}
 
 					retorno.items = extend;
 					res.json(retorno);
 				});
-			}			
-			
+			}
+
 			getCurrencies();
 		});
 
-
-
-
-
 	}).on("error", (err) => {
-		console.log("Erro: " + err.message);
+		res.json({
+			erro: err.message
+		});
 	})
 });
 
