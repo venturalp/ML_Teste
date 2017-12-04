@@ -1,2 +1,15 @@
-
-{{pagina}}
+<div ng-show="carregando" class="carregando">Carregando...</div>
+<section class="content sec-busca">	
+	<article ng-repeat="r in resultados">
+		<div>
+			<div>
+				<img ng-src={{r.picutre}}/>
+			</div>
+			<div>
+				<h2>{{r.price.currency}} {{r.price.amount}}.{{r.price.decimal}}</h2>
+				<h3>{{r.title}}</h3>
+				<a href="#!/items/{{r.id}}" class="ver-mais">Ver mais</a>
+			</div>
+		</div>
+	</article>
+</section>

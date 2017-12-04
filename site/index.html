@@ -5,23 +5,29 @@
 	<base href="/">
 	<meta charset="UTF-8">
 	<title>Teste Mercado Livre</title>
+	<link rel="stylesheet" href="css/general.css"/>
 </head>
 
 <body>
-	<h1>Animais para Adoção</h1>
-
-	<div ng-view style="border: 1px solid" ng-controller="buscaCtrl">
-		{{pagina}}
+	<header>
+		<div class="content">
+			<img src="images/logo.png"/>
+			<form>
+				<div>
+					<input type="text" ng-model="txtBusca" placeholder="Digite a sua busca"/>
+					<button class="bt-find" ng-click="buscar();"></button>
+				</div>	
+			</form>
+		</div>			
+	</header>
+	<div ng-view>
+		
 	</div>
-	<script src="bower_components/angular/angular.min.js"></script>	
+	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.min.js"></script>	
 	<script src="js/app.js"></script>
-<!--
 	<script src="js/buscaCtrl.js"></script>
-	<script src="js/itemsCtrl.js"></script>
-	<script src="js/queryCtrl.js"></script>
--->
-	
+	<script src="js/itemsCtrl.js"></script>	
 </body>
 
 </html>
