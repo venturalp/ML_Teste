@@ -91,7 +91,7 @@ app.get('/api/items/:id', function (req, res) {
 });
 
 app.get('/api/items', function (req, res) {
-	https.get('https://api.mercadolibre.com/sites/MLA/search?q=' + req.query.q, (resp) => {
+	https.get('https://api.mercadolibre.com/sites/MLA/search?limit=4&q=' + req.query.q, (resp) => {
 		let data = '';
 		let retorno = {};
 
