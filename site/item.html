@@ -1,1 +1,24 @@
-{{pagina}}
+<div ng-show="carregando" class="carregando">Carregando...</div>
+<section class="content sec-item">
+	<article ng-show="item">
+		<div class="produto">
+			<div>
+				<img ng-src="{{item.picture}}"/>
+			</div>
+			<div>
+				<i>Vendidos: {{item.sold_quantity}}</i>
+				<h1>{{item.title}}</h1>
+				<h2>{{item.price.currency}} {{item.price.amount}}.{{item.price.decimal}}</h2>
+				<a href="#" class="bt-comprar">Comprar</a>
+			</div>
+		</div>
+		<div class="descricao">
+			<h2>Descrição do Produto</h2>
+			<div>
+				<p>Condição: {{item.condition}}</p>
+				<p>Frete grátis? {{item.free_shipping?'Sim':'Não'}}</p>
+			</div>
+			<p>{{item.description}}</p>
+		</div>
+	</article>
+</section>

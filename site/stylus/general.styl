@@ -27,6 +27,7 @@ body
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
 	font-family sans-serif
+	color $txt
 	
 .content
 	width $content
@@ -45,12 +46,22 @@ header
 	background-color $mainColor
 	&>div
 		padding 20px 0px
-		&>img, & form
+		&>div
+			display table
+			width 100%
+			&>div, &>form
+				display table-cell
+				vertical-align middle
+			&>div
+				padding-right 30px
+				+below(560px)
+					display none
+		& img, & form
 			display inline-block
 			vertical-align middle
-		&>img
-			margin-right 30px
-		&>form
+		& img
+			max-width 100%
+		& form
 			width 80%
 			& input
 				border 0px
@@ -71,17 +82,24 @@ header
 				width 40px
 				border 0px
 				background-color #f1f1f1
+			+below(560px)
+				width 100%
 				
 .carregando
 	text-align center
 	padding 10px
 	
-.sec-busca
+	
+section.content
 	margin 40px auto	
 	background-color #fff
 	padding 35px 50px
+	+below(700px)
+		padding 10px 10px
+.sec-busca	
 	& article
 		margin-bottom 10px
+		padding 20px 0px
 		&:last-child
 			margin-bottom 0px
 		&>div
@@ -101,7 +119,11 @@ header
 					set-font-size(14px)
 					margin-bottom 20px
 				& h3					
-					set-font-size(16px)
+					set-font-size(15px)
+					margin-bottom 6px
+				& p
+					line-height 1.2
+					set-font-size(12px)
 		.ver-mais
 			color #fff
 			background-color $link
@@ -111,5 +133,64 @@ header
 			display inline-block
 			float right
 			top 0
+		+below(560px)
+			&>div
+				&>div
+					&:first-child
+						width 110px
+						& img
+							max-width 90px
+			& .ver-mais
+				set-font-size(13px)
+				padding 2px 3px
+.sec-item
+	& .produto
+		display table
+		width 100%
+		&>div
+			display table-cell
+			vertical-align top			
+			&:first-child
+				text-align center
+				& img
+					max-width 100%
+			&:last-child
+				width 30%
+				& i
+					font-style italic
+					set-font-size(11px)
+				& h1
+					set-font-size(24px)
+					font-weight bold
+				& h2
+					set-font-size(30px)
+					margin-top 10px
+					margin-bottom 40px
+				& .bt-comprar
+					background-color $link
+					color #fff
+					set-font-size(18px)
+					padding 8px 10px
+					text-decoration none
+					border-radius 5px
+			+below(960px)
+				display block
+				&:last-child
+					width 100%
+	& .descricao
+		margin-top 40px
+		& h2
+			font-weight bold
+			set-font-size(24px)
+			margin-bottom 10px
+		&>div
+			margin-bottom 10px
+			& p
+				set-font-size(12px)
+				line-height 1.2
+		&>p
+			set-font-size(18px)
+			line-height 1.2
+			word-break break-all
+				
 			
-						

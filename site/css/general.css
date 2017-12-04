@@ -146,6 +146,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sans-serif;
+  color: #4a4a4a;
 }
 .content {
   width: 1240px;
@@ -168,18 +169,35 @@ header {
 header>div {
   padding: 20px 0px;
 }
-header>div>img,
+header>div>div {
+  display: table;
+  width: 100%;
+}
+header>div>div>div,
+header>div>div>form {
+  display: table-cell;
+  vertical-align: middle;
+}
+header>div>div>div {
+  padding-right: 30px;
+}
+@media only screen and (max-width: 560px) {
+  header>div>div>div {
+    display: none;
+  }
+}
+header>div img,
 header>div form {
   display: inline-block;
   vertical-align: middle;
 }
-header>div>img {
-  margin-right: 30px;
+header>div img {
+  max-width: 100%;
 }
-header>div>form {
+header>div form {
   width: 80%;
 }
-header>div>form input {
+header>div form input {
   border: 0px;
   height: 35px;
   padding: 10px;
@@ -189,7 +207,7 @@ header>div>form input {
   vertical-align: top;
   width: 80%;
 }
-header>div>form button {
+header>div form button {
   display: inline-block;
   vertical-align: top;
   appearance: none;
@@ -205,17 +223,28 @@ header>div>form button {
   border: 0px;
   background-color: #f1f1f1;
 }
+@media only screen and (max-width: 560px) {
+  header>div form {
+    width: 100%;
+  }
+}
 .carregando {
   text-align: center;
   padding: 10px;
 }
-.sec-busca {
+section.content {
   margin: 40px auto;
   background-color: #fff;
   padding: 35px 50px;
 }
+@media only screen and (max-width: 700px) {
+  section.content {
+    padding: 10px 10px;
+  }
+}
 .sec-busca article {
   margin-bottom: 10px;
+  padding: 20px 0px;
 }
 .sec-busca article:last-child {
   margin-bottom: 0px;
@@ -243,8 +272,14 @@ header>div>form button {
   margin-bottom: 20px;
 }
 .sec-busca article>div>div h3 {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  margin-bottom: 6px;
+}
+.sec-busca article>div>div p {
+  line-height: 1.2;
+  font-size: 12px;
+  font-size: 0.75rem;
 }
 .sec-busca article .ver-mais {
   color: #fff;
@@ -259,4 +294,94 @@ header>div>form button {
   display: inline-block;
   float: right;
   top: 0;
+}
+@media only screen and (max-width: 560px) {
+  .sec-busca article>div>div:first-child {
+    width: 110px;
+  }
+  .sec-busca article>div>div:first-child img {
+    max-width: 90px;
+  }
+  .sec-busca article .ver-mais {
+    font-size: 13px;
+    font-size: 0.8125rem;
+    padding: 2px 3px;
+  }
+}
+.sec-item .produto {
+  display: table;
+  width: 100%;
+}
+.sec-item .produto>div {
+  display: table-cell;
+  vertical-align: top;
+}
+.sec-item .produto>div:first-child {
+  text-align: center;
+}
+.sec-item .produto>div:first-child img {
+  max-width: 100%;
+}
+.sec-item .produto>div:last-child {
+  width: 30%;
+}
+.sec-item .produto>div:last-child i {
+  font-style: italic;
+  font-size: 11px;
+  font-size: 0.6875rem;
+}
+.sec-item .produto>div:last-child h1 {
+  font-size: 24px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.sec-item .produto>div:last-child h2 {
+  font-size: 30px;
+  font-size: 1.875rem;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.sec-item .produto>div:last-child .bt-comprar {
+  background-color: #3483fa;
+  color: #fff;
+  font-size: 18px;
+  font-size: 1.125rem;
+  padding: 8px 10px;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 960px) {
+  .sec-item .produto>div {
+    display: block;
+  }
+  .sec-item .produto>div:last-child {
+    width: 100%;
+  }
+}
+.sec-item .descricao {
+  margin-top: 40px;
+}
+.sec-item .descricao h2 {
+  font-weight: bold;
+  font-size: 24px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.sec-item .descricao>div {
+  margin-bottom: 10px;
+}
+.sec-item .descricao>div p {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+.sec-item .descricao>p {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  word-break: break-all;
 }

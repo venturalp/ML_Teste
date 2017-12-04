@@ -4,6 +4,7 @@
 <head>
 	<base href="/">
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Teste Mercado Livre</title>
 	<link rel="stylesheet" href="css/general.css"/>
 </head>
@@ -11,13 +12,17 @@
 <body>
 	<header>
 		<div class="content">
-			<img src="images/logo.png"/>
-			<form>
+			<div>
 				<div>
-					<input type="text" ng-model="txtBusca" placeholder="Digite a sua busca"/>
-					<button class="bt-find" ng-click="buscar();"></button>
-				</div>	
-			</form>
+					<img src="images/logo.png"/>
+				</div>				
+				<form>
+					<div>
+						<input type="text" ng-model="txtBusca" placeholder="Digite a sua busca"/>
+						<button class="bt-find" ng-click="buscar();"></button>
+					</div>	
+				</form>
+			</div>
 		</div>			
 	</header>
 	<div ng-view>

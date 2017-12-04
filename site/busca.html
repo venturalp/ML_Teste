@@ -8,6 +8,8 @@
 			<div>
 				<h2>{{r.price.currency}} {{r.price.amount}}.{{r.price.decimal}}</h2>
 				<h3>{{r.title}}</h3>
+				<p>Condição: {{r.condition}}</p>
+				<p>Frete grátis? {{r.free_shipping?'Sim':'Não'}}</p>
 				<a href="#!/items/{{r.id}}" class="ver-mais">Ver mais</a>
 			</div>
 		</div>
